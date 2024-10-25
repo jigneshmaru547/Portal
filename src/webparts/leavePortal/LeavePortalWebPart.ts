@@ -14,6 +14,10 @@ import { ILeavePortalProps } from './components/ILeavePortalProps';
 
 export interface ILeavePortalWebPartProps {
   description: string;
+  logoUrl: string;
+  companyName: string;
+  user:any;
+  userDisplayName: string;
 }
 
 export default class LeavePortalWebPart extends BaseClientSideWebPart<ILeavePortalWebPartProps> {
@@ -29,6 +33,9 @@ export default class LeavePortalWebPart extends BaseClientSideWebPart<ILeavePort
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
+        user: this.context.pageContext.user,
+        logoUrl: this.properties.logoUrl,
+        companyName: this.properties.companyName,
         userDisplayName: this.context.pageContext.user.displayName
       }
     );
@@ -109,6 +116,12 @@ export default class LeavePortalWebPart extends BaseClientSideWebPart<ILeavePort
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('logoUrl', {
+                  label: "Logo URL"
+                }),
+                PropertyPaneTextField('companyName', {
+                  label: "Company Name"
                 })
               ]
             }

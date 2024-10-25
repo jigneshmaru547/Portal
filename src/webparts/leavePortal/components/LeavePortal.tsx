@@ -1,43 +1,26 @@
 import * as React from 'react';
 import styles from './LeavePortal.module.scss';
 import { ILeavePortalProps } from './ILeavePortalProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { Persona, PersonaSize } from '@fluentui/react/lib/Persona';
 
-export default class LeavePortal extends React.Component<ILeavePortalProps, {}> {
-  public render(): React.ReactElement<ILeavePortalProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+const LeavePortal: React.FunctionComponent<ILeavePortalProps> = (props: ILeavePortalProps) => {
 
-    return (
-      <section className={`${styles.leavePortal} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
-        </div>
+  return (
+    <div className={styles.maindiv}>
+      <div className={styles.Header}>
+        <img className={styles.headerlogo} src={props.logoUrl} />
+        <div className={styles.companyName}>Leave Portal</div>
         <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
+          <Persona
+            imageUrl={props.user.profilePictureUrl}
+            text={props.userDisplayName}
+            secondaryText={props.user.email}
+            size={PersonaSize.size32}
+            presence={1} />
         </div>
-      </section>
-    );
-  }
+      </div>
+
+    </div>
+  )
 }
+export default LeavePortal;

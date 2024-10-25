@@ -1,34 +1,25 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
-.leavePortal {
-  overflow: hidden;
-  padding: 1em;
-  color: "[theme:bodyText, default: #323130]";
-  color: var(--bodyText);
-  &.teams {
-    font-family: $ms-font-family-fallbacks;
-  }
-}
-
-.welcome {
-  text-align: center;
-}
-
-.welcomeImage {
+.maindiv{
   width: 100%;
-  max-width: 420px;
 }
-
-.links {
-  a {
-    text-decoration: none;
-    color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
-
-    &:hover {
-      text-decoration: underline;
-      color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
-    }
-  }
+.Header{
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+}
+.headerlogo{
+  height: 40px;
+  width: 96px;
+}
+.companyName{
+  width: auto;
+  align-items: center;
+  font-size: 21px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+  color: rgb(245, 179, 57);
+  align-content: center;
+  height: 40px;
 }
